@@ -2,6 +2,7 @@ require ('dotenv').config()
 const express=require('express')
 const mongoose=require('mongoose')
 const morgan=require('morgan')
+const cors=require('cors')
 const app=express()
 const {PORT=3000, DATABASE_URL}=process.env
 
@@ -25,6 +26,7 @@ const Cheese=mongoose.model("Cheese", CheeseSchema)
 
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(cors())
 
 // routes
 app.get('/', (req, res)=>{
